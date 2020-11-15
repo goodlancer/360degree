@@ -658,7 +658,7 @@ export default function ThreeSixtyTour() {
                         setActiveSide("hotspot");
                       }}
                     >
-                      <i class="fas fa-location-arrow"></i>
+                      <i className="fas fa-location-arrow"></i>
                     </div>
 
                     {/* end hotstpor sidbar */}
