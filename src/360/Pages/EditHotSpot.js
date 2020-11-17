@@ -443,6 +443,7 @@ export default function ThreeSixtyTour() {
         setLoading(false);
       })
       .catch((error) => {
+        console.log(error);
         // showAlert({
         //   msg: `Dear Admin add tour `,
         //   type: "success",
@@ -1223,8 +1224,30 @@ export default function ThreeSixtyTour() {
                           <h4>Transform:</h4>
                           <div>
                           <span class="transfom_lb"> X:</span> <input type="number" class="transfrom_value" name="x_val"></input>
-                          <span class="transfom_lb"> y:</span> <input type="number" class="transfrom_value" name="x_val"></input>
-                          <span class="transfom_lb"> z:</span> <input type="number" class="transfrom_value" name="x_val"></input>
+                          <span class="transfom_lb"> y:</span> <input type="number" class="transfrom_value" name="y_val"></input>
+                          <span class="transfom_lb"> z:</span> <input type="number" class="transfrom_value" name="z_val"></input>
+                          </div>
+                        </div>
+                        <div class="collected">
+                          <h4>Scale:</h4>
+                          <div>
+                          <span class="transfom_lb"> X:</span> <input type="number" class="transfrom_value" name="sx_val"></input>
+                          <span class="transfom_lb"> y:</span> <input type="number" class="transfrom_value" name="sy_val"></input>
+                          <span class="transfom_lb"> z:</span> <input type="number" class="transfrom_value" name="sz_val"></input>
+                          </div>
+                        </div>
+                        <div class="collected">
+                          <h4>Opacity:</h4>
+                          <div>
+                          <input
+                            type="range"
+                            step="0.1"
+                            min="0"
+                            max="1"
+                            
+                          />
+                          
+                          
                           </div>
                         </div>
                       </div>

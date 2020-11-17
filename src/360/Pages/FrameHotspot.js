@@ -143,43 +143,63 @@ import Modal from "react-modal";
 import { ContextMenu, MenuItem, ContextMenuTrigger } from "react-contextmenu";
 
 require('aframe-event-set-component');registerClickDrag(aframe);
-// aframe.registerComponent('drag-rotate-component',{
-//       schema : { speed : {default:1}},
-//       init : function(){
-//         this.ifMouseDown = false;
-//         this.x_cord = 0;
-//         this.y_cord = 0;
-//         document.addEventListener('mousedown',this.OnDocumentMouseDown.bind(this));
-//         document.addEventListener('mouseup',this.OnDocumentMouseUp.bind(this));
-//         document.addEventListener('mousemove',this.OnDocumentMouseMove.bind(this));
-//       },
-//       OnDocumentMouseDown : function(event){
-//         this.ifMouseDown = true;
-//         this.x_cord = event.clientX;
-//         this.y_cord = event.clientY;
-//       },
-//       OnDocumentMouseUp : function(){
-//         this.ifMouseDown = false;
-//       },
-//       OnDocumentMouseMove : function(event)
-//       {
-//         if(this.ifMouseDown)
-//         {
-//           var temp_x = event.clientX-this.x_cord;
-//           var temp_y = event.clientY-this.y_cord;
-//           if(Math.abs(temp_y)<Math.abs(temp_x))
-//           {
-//             this.el.object3D.rotateY(temp_x*this.data.speed/1000);
-//           }
-//           else
-//           {
-//             this.el.object3D.rotateX(temp_y*this.data.speed/1000);
-//           }
-//           this.x_cord = event.clientX;
-//           this.y_cord = event.clientY;
-//         }
-//       }
-//     });
+aframe.registerComponent('drag_mouse', {
+  schama: {speed: {default:1}},
+  init: function(){
+    this.ifMouseDown = false;
+    this.addEventListener('mousedown', this.OnMouseDown.bind(this));
+    this.addEventListener('mouseup', this.OnMouseUp.bind(this));
+    this.addEventListener('mousemove', this.OnMouseMove.bind(this));
+  },
+  OnMouseDown: function(event){
+    this.ifMouseDown = true;
+  },
+  OnMouseUp: function(event){
+    this.ifMouseDown = false;
+  },
+  OnMouseMove: function(event){
+    if(this.ifMouseDown){
+      console.log("cehck ok");
+    }
+  }
+});
+aframe.registerComponent('drag-rotate-component',{
+      schema : { speed : {default:1}},
+      init : function(){
+        this.ifMouseDown = false;
+        this.x_cord = 0;
+        this.y_cord = 0;
+        this.addEventListener('mousedown',this.OnDocumentMouseDown.bind(this));
+        this.addEventListener('mouseup',this.OnDocumentMouseUp.bind(this));
+        this.addEventListener('mousemove',this.OnDocumentMouseMove.bind(this));
+      },
+      OnDocumentMouseDown : function(event){
+        this.ifMouseDown = true;
+        this.x_cord = event.clientX;
+        this.y_cord = event.clientY;
+      },
+      OnDocumentMouseUp : function(){
+        this.ifMouseDown = false;
+      },
+      OnDocumentMouseMove : function(event)
+      {
+        if(this.ifMouseDown)
+        {
+          var temp_x = event.clientX-this.x_cord;
+          var temp_y = event.clientY-this.y_cord;
+          if(Math.abs(temp_y)<Math.abs(temp_x))
+          {
+            this.el.object3D.rotateY(temp_x*this.data.speed/1000);
+          }
+          else
+          {
+            this.el.object3D.rotateX(temp_y*this.data.speed/1000);
+          }
+          this.x_cord = event.clientX;
+          this.y_cord = event.clientY;
+        }
+      }
+    });
 let markers =[
   {
     name: 'image',
